@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #050505;
+  --color-surface: #0e0e0e;
+  --color-surface-2: #141414;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.22);
+
+  --color-text: #fafafa;
+  --color-text-dim: #a3a3a3;
+  --color-text-faint: #6b6b6b;
+
+  --color-accent-from: #7f1d1d;
+  --color-accent-via: #dc2626;
+  --color-accent-to: #ef4444;
+
+  --color-good: #34d399;
+  --color-warn: #fbbf24;
+  --color-bad: #ef4444;
+}
+
+html {
+  color-scheme: dark;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.hero-logo {
+  width: min(92vw, 620px) !important;
+  max-width: 100% !important;
+  height: 124px !important;
+}
+
+@media (max-width: 767px) {
+  .hero-logo {
+    height: 96px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-logo {
+    height: 78px !important;
+  }
+}
+
+::selection {
+  background: rgba(220, 38, 38, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+}
+
+.glass-hover {
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.glass-hover:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 8px 40px -12px rgba(220, 38, 38, 0.3);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-accent-from), var(--color-accent-via), var(--color-accent-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-mesh {
+  background-image:
+    radial-gradient(ellipse 55% 45% at 18% 12%, rgba(239, 68, 68, 0.24), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 25%, rgba(127, 29, 29, 0.28), transparent 62%),
+    radial-gradient(ellipse 70% 55% at 30% 85%, rgba(220, 38, 38, 0.18), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 95% 90%, rgba(0, 0, 0, 0.6), transparent 60%),
+    linear-gradient(160deg, #050505 0%, #0a0303 45%, #050505 100%);
+}

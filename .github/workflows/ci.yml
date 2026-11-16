@@ -1,0 +1,34 @@
+name: NexusAudit CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-build:
+    name: Validate Full-Stack Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install All Dependencies
+        run: npm run install:all
+
+      - name: Verify Client Vite Build
+        run: npm run build
+
+      - name: Verify Server Syntax
+        run: node --check server/src/index.js
